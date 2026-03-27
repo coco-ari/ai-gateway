@@ -23,7 +23,7 @@ async function testBasicCall() {
         'anthropic-version': '2023-06-01'
       },
       body: JSON.stringify({
-        model: 'claude-3-5-sonnet-20241022',
+        model: 'glm-5',
         max_tokens: 100,
         messages: [
           { role: 'user', content: '你好，请说"测试成功"' }
