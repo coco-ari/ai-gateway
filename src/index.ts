@@ -2,5 +2,5 @@
 
 export * as Types from './types';
 export * from './core/error';
-export { Anthropic, ClientOptions } from './client';
+export { AliyunBailian, ClientOptions } from './client';
 export { Messages } from './resources/messages';

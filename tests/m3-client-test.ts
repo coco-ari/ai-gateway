@@ -1,5 +1,5 @@
 // M3 客户端测试
-import { Anthropic, AuthenticationError, NotFoundError } from '../src';
+import { AliyunBailian, AuthenticationError, NotFoundError } from '../src';
 
 async function testClient() {
   console.log('=== M3: 客户端测试 ===\n');
@@ -12,7 +12,7 @@ async function testClient() {
 
   // 测试 1: 客户端实例化
   console.log('测试 1: 客户端实例化...');
-  const client = new Anthropic({
+  const client = new AliyunBailian({
     apiKey,
     baseURL: 'https://coding.dashscope.aliyuncs.com/apps/anthropic'
   });
@@ -52,7 +52,7 @@ async function testClient() {
   // 测试 4: 无效 API Key
   console.log('\n测试 4: 无效 API Key...');
   try {
-    const badClient = new Anthropic({
+    const badClient = new AliyunBailian({
       apiKey: 'invalid-key',
       baseURL: 'https://coding.dashscope.aliyuncs.com/apps/anthropic'
     });

@@ -9,7 +9,7 @@ export interface ClientOptions {
   version?: string;
 }
 
-export class Anthropic {
+export class AliyunBailian {
   private requestor: Requestor;
   public messages: Messages;
 
@@ -18,7 +18,7 @@ export class Anthropic {
       throw new Error('apiKey is required');
     }
 
-    const baseURL = options.baseURL || 'https://api.anthropic.com';
+    const baseURL = options.baseURL || 'https://coding.dashscope.aliyuncs.com/apps/anthropic';
     const version = options.version || '2023-06-01';
 
     this.requestor = new Requestor(baseURL, options.apiKey, version);
