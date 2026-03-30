@@ -68,11 +68,8 @@ export interface Message {
  * 可用的模型 ID
  */
 export type ModelId =
-  | 'claude-3-5-sonnet-20241022'
-  | 'claude-3-5-haiku-20241022'
-  | 'claude-3-opus-20240229'
-  | 'claude-3-sonnet-20240229'
-  | 'claude-3-haiku-20240307';
+  | 'glm-5'
+  | 'kimi-k2.5';
 
 /**
  * 结束原因

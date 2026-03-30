@@ -22,7 +22,7 @@ async function testClient() {
   console.log('测试 2: 发送请求...');
   try {
     const response = await client.messages.create({
-      model: 'claude-3-5-sonnet-20241022',
+      model: 'glm-5',
       max_tokens: 50,
       messages: [{ role: 'user', content: '说"测试成功"' }]
     });
@@ -57,7 +57,7 @@ async function testClient() {
       baseURL: 'https://coding.dashscope.aliyuncs.com/apps/anthropic'
     });
     await badClient.messages.create({
-      model: 'claude-3-5-sonnet-20241022',
+      model: 'glm-5',
       max_tokens: 10,
       messages: [{ role: 'user', content: 'test' }]
     });

@@ -118,7 +118,7 @@ async function testBasicCall() {
         'anthropic-version': '2023-06-01'
       },
       body: JSON.stringify({
-        model: 'claude-3-5-sonnet-20241022',
+        model: 'glm-5',
         max_tokens: 100,
         messages: [
           { role: 'user', content: '你好，请说"测试成功"' }
@@ -220,7 +220,7 @@ import {
 
 // 测试 1: 基本消息参数
 const params1: MessageCreateParams = {
-  model: 'claude-3-5-sonnet-20241022',
+  model: 'glm-5',
   max_tokens: 100,
   messages: [
     { role: 'user', content: '你好' }
@@ -230,7 +230,7 @@ console.log('✅ 测试 1 通过: 基本参数类型正确');
 
 // 测试 2: content 为数组
 const params2: MessageCreateParams = {
-  model: 'claude-3-5-sonnet-20241022',
+  model: 'glm-5',
   max_tokens: 100,
   messages: [
     {
@@ -246,7 +246,7 @@ console.log('✅ 测试 2 通过: 数组内容类型正确');
 
 // 测试 3: 系统消息
 const params3: MessageCreateParams = {
-  model: 'claude-3-5-sonnet-20241022',
+  model: 'glm-5',
   max_tokens: 100,
   system: '你是一个有帮助的助手',
   messages: [
@@ -263,7 +263,7 @@ const response: MessageResponse = {
   content: [
     { type: 'text', text: '你好！' }
   ],
-  model: 'claude-3-5-sonnet-20241022',
+  model: 'glm-5',
   stop_reason: 'end_turn',
   usage: { input_tokens: 10, output_tokens: 5 }
 };
@@ -271,7 +271,7 @@ console.log('✅ 测试 4 通过: 响应类型正确');
 
 // 测试 5: 类型错误应该被捕获（取消注释应该报错）
 // const badParams: MessageCreateParams = {
-//   model: 'claude-3-5-sonnet-20241022',
+//   model: 'glm-5',
 //   max_tokens: 100,
 //   messages: [
 //     { role: 'invalid-role', content: 'test' } // 应该报错
@@ -359,7 +359,7 @@ async function testClient() {
   try {
     // 假设你已经实现了 messages.create
     const response = await client.messages.create({
-      model: 'claude-3-5-sonnet-20241022',
+      model: 'glm-5',
       max_tokens: 50,
       messages: [{ role: 'user', content: '说"测试成功"' }]
     });
@@ -447,7 +447,7 @@ async function testMessages() {
   // 测试 1: 基本调用
   console.log('测试 1: 基本调用...');
   const response1 = await client.messages.create({
-    model: 'claude-3-5-sonnet-20241022',
+    model: 'glm-5',
     max_tokens: 50,
     messages: [{ role: 'user', content: '你好' }]
   });
@@ -457,7 +457,7 @@ async function testMessages() {
   // 测试 2: 多轮对话
   console.log('\n测试 2: 多轮对话...');
   const response2 = await client.messages.create({
-    model: 'claude-3-5-sonnet-20241022',
+    model: 'glm-5',
     max_tokens: 50,
     messages: [
       { role: 'user', content: '我叫小明' },
@@ -471,7 +471,7 @@ async function testMessages() {
   // 测试 3: System 消息
   console.log('\n测试 3: System 消息...');
   const response3 = await client.messages.create({
-    model: 'claude-3-5-sonnet-20241022',
+    model: 'glm-5',
     max_tokens: 50,
     system: '你是一个海盗，说话要用海盗的口吻',
     messages: [{ role: 'user', content: '你好' }]
@@ -482,7 +482,7 @@ async function testMessages() {
   // 测试 4: 参数支持
   console.log('\n测试 4: 可选参数...');
   const response4 = await client.messages.create({
-    model: 'claude-3-5-sonnet-20241022',
+    model: 'glm-5',
     max_tokens: 50,
     temperature: 0.5,
     messages: [{ role: 'user', content: '说一个数字' }]
@@ -557,7 +557,7 @@ async function testStream() {
   // 测试 1: 流式调用
   console.log('测试 1: 流式调用...');
   const stream = await client.messages.stream({
-    model: 'claude-3-5-sonnet-20241022',
+    model: 'glm-5',
     max_tokens: 100,
     messages: [{ role: 'user', content: '用50字介绍北京' }]
   });
@@ -586,7 +586,7 @@ async function testStream() {
   // 测试 2: 事件类型验证
   console.log('\n测试 2: 验证事件类型...');
   const stream2 = await client.messages.stream({
-    model: 'claude-3-5-sonnet-20241022',
+    model: 'glm-5',
     max_tokens: 50,
     messages: [{ role: 'user', content: '你好' }]
   });

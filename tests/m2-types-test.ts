@@ -16,7 +16,7 @@ import {
 
 // 测试 1: 基本消息参数
 const params1: MessageCreateParams = {
-  model: 'claude-3-5-sonnet-20241022',
+  model: 'glm-5',
   max_tokens: 100,
   messages: [
     { role: 'user', content: '你好' }
@@ -26,7 +26,7 @@ console.log('✅ 测试 1 通过: 基本参数类型正确');
 
 // 测试 2: content 为数组
 const params2: MessageCreateParams = {
-  model: 'claude-3-5-sonnet-20241022',
+  model: 'glm-5',
   max_tokens: 100,
   messages: [
     {
@@ -42,7 +42,7 @@ console.log('✅ 测试 2 通过: 数组内容类型正确');
 
 // 测试 3: 系统消息
 const params3: MessageCreateParams = {
-  model: 'claude-3-5-sonnet-20241022',
+  model: 'glm-5',
   max_tokens: 100,
   system: '你是一个有帮助的助手',
   messages: [
@@ -59,7 +59,7 @@ const response: MessageResponse = {
   content: [
     { type: 'text', text: '你好！' }
   ],
-  model: 'claude-3-5-sonnet-20241022',
+  model: 'glm-5',
   stop_reason: 'end_turn',
   stop_sequence: null,
   usage: { input_tokens: 10, output_tokens: 5 }
@@ -68,7 +68,7 @@ console.log('✅ 测试 4 通过: 响应类型正确');
 
 // 测试 5: 多轮对话
 const params5: MessageCreateParams = {
-  model: 'claude-3-5-sonnet-20241022',
+  model: 'glm-5',
   max_tokens: 100,
   messages: [
     { role: 'user', content: '你好' },
@@ -80,7 +80,7 @@ console.log('✅ 测试 5 通过: 多轮对话类型正确');
 
 // 测试 6: 可选参数
 const params6: MessageCreateParams = {
-  model: 'claude-3-5-sonnet-20241022',
+  model: 'glm-5',
   max_tokens: 100,
   temperature: 0.5,
   top_p: 0.9,
@@ -97,7 +97,7 @@ const assistantRole: Role = 'assistant';
 console.log('✅ 测试 7 通过: Role 类型正确');
 
 // 测试 8: ModelId 类型检查
-const modelId: ModelId = 'claude-3-5-sonnet-20241022';
+const modelId: ModelId = 'glm-5';
 console.log('✅ 测试 8 通过: ModelId 类型正确');
 
 // 测试 9: ContentBlock 类型检查
