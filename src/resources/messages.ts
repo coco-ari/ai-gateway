@@ -27,4 +27,20 @@ export class Messages {
       throw error;
     }
   }
+
+async stream(params: MessageCreateParams): Promise<ReadableStreamDefaultReader> {
+    try {
+      return  await this.requestor.stream({
+        method: 'POST',
+        path: '/v1/messages',
+        body: params,
+      });
+    } catch (error) {
+      if (error instanceof APIResponseError && error.errorData) {
+        const errorInfo = error.errorData.error;
+        throw createErrorFromType(errorInfo.type, errorInfo.message);
+      }
+      throw error;
+    }
+  }
 }

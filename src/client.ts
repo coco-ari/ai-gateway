@@ -21,7 +21,8 @@ export class AliyunBailian {
     const baseURL = options.baseURL || 'https://coding.dashscope.aliyuncs.com/apps/anthropic';
     const version = options.version || '2023-06-01';
 
-    this.requestor = new Requestor(baseURL, options.apiKey, version);
+
+    this.requestor = new Requestor(baseURL, options.apiKey, version );
     this.messages = new Messages(this.requestor);
   }
 }

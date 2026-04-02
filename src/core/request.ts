@@ -86,4 +86,40 @@ export class Requestor {
       throw new APIConnectionError(`Connection error: ${(error as Error).message}`);
     }
   }
+
+
+  async stream (options: RequestOptions): Promise<ReadableStreamDefaultReader>{
+    const url = `${this.baseURL}${options.path}`;
+
+    const headers: Record<string, string> = {
+      'Content-Type': 'application/json',
+      'x-api-key': this.apiKey,
+      'anthropic-version': this.version,
+    };
+
+    const fetchOptions: RequestInit = {
+      method: options.method,
+      headers,
+    };
+
+    if (options.body) {
+      fetchOptions.body = JSON.stringify(options.body);
+    }
+
+    try {
+      const response = await fetch(url, fetchOptions);
+
+      if (!response.ok) {
+        throw new Error(`请求失败: ${response.status}`);
+      }
+
+      return response.body!.getReader();
+
+    } catch (error) {
+      if (error instanceof APIResponseError) {
+        throw error;
+      }
+      throw new APIConnectionError(`Connection error: ${(error as Error).message}`);
+    }
+  }
 }

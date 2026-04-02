@@ -121,3 +121,5 @@ function handleEvent(event: any, eventType: string) {
 }
 
 testStream().catch(console.error);
+
+export{};
