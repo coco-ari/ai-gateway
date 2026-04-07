@@ -42,7 +42,17 @@ const tools: Types.ToolDefinition[] = [
             },
             required: ['expression']
         }
+    },
+    {
+        name: 'get_weight',
+        description: '获取实时体重',
+        input_schema: {
+            type: 'object' as const,
+            properties: {},
+            required: [],
+        },
     }
+
 ];
 
 // 工具执行函数
@@ -71,18 +81,29 @@ function executeTool(name: string, input: Record<string, unknown>): string {
                 return '计算错误';
             }
         }
+        case 'get_weight': {
+            const weight = input.weight as string;
+            try {
+                // 注意：实际应用中不要使用 eval，这里仅作演示
+                // 安全的替代方案：使用 math.js 库
+                const result = 60;
+                return `实时体重: ${result}`;
+            } catch {
+                return `实时体重获取错误 "${weight}"`;
+            }
+        }
         default:
             return `未知工具: ${name}`;
     }
 }
 
 async function main() {
-    console.log('用户问题: 北京今天天气怎么样？如果温度是15度，那15*2是多少？\n');
+    //console.log('用户问题: 北京今天天气怎么样？如果温度是15度，那15*2是多少？\n');
 
     const messages: Types.Message[] = [
         {
             role: 'user',
-            content: '北京今天天气怎么样？如果温度是15度，那15*2是多少？'
+            content: '获取实时体重。北京今天天气怎么样？如果温度是15度，那15*2是多少？'
         }
     ];
 
