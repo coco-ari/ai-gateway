@@ -38,9 +38,38 @@ export interface ImageBlock {
 }
 
 /**
- * 内容块联合类型
+ * 工具使用块 - 模型请求调用工具
  */
-export type ContentBlock = TextBlock | ImageBlock;
+export interface ToolUseBlock {
+  type: 'tool_use';
+  id: string;
+  name: string;
+  input: Record<string, unknown>;
+}
+
+/**
+ * 工具结果块 - 返回给模型的工具执行结果
+ */
+export interface ToolResultBlock {
+  type: 'tool_result';
+  tool_use_id: string;
+  content: string;
+  is_error?: boolean;
+}
+
+/**
+ * 思考内容块 - AI 的内部思考过程
+ */
+export interface ThinkingBlock {
+  type: 'thinking';
+  thinking: string;
+  signature?: string;
+}
+
+/**
+ * 内容块联合类型（扩展支持 Tool Calling 和 Thinking）
+ */
+export type ContentBlock = TextBlock | ImageBlock | ToolUseBlock | ToolResultBlock | ThinkingBlock;
 
 // ============================================
 // 消息类型
@@ -77,6 +106,23 @@ export type ModelId =
 export type StopReason = 'end_turn' | 'max_tokens' | 'stop_sequence' | 'tool_use';
 
 /**
+ * 工具定义 - 告诉模型有哪些工具可用
+ */
+export interface ToolDefinition {
+  name: string;
+  description: string;
+  input_schema: {
+    type: 'object';
+    properties: Record<string, {
+      type: 'string' | 'number' | 'boolean' | 'array' | 'object';
+      description?: string;
+      enum?: string[];
+    }>;
+    required?: string[];
+  };
+}
+
+/**
  * 创建消息的请求参数
  */
 export interface MessageCreateParams {
@@ -111,6 +157,9 @@ export interface MessageCreateParams {
   metadata?: {
     user_id?: string;
   };
+
+  /** 工具列表 - 可选，用于 Tool Calling */
+  tools?: ToolDefinition[];
 }
 
 // ============================================
