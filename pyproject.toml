@@ -1,0 +1,15 @@
+[project]
+name = "ai-gateway"
+version = "0.1.0"
+description = "AI Gateway - Python learning project"
+requires-python = ">=3.10"
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "ruff>=0.3.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
